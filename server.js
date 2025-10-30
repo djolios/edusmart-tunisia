@@ -5,15 +5,8 @@ const cors = require('cors');
 
 const app = express();
 const path = require('path');
-app.use(express.static('public'));
 
-// هذا السطر يخبر الخادم بأن يعرض ملف index.html عند زيارة الصفحة الرئيسية
-// هذا السطر هو الحل لمشكلة "Not Found" التي واجهتها
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// هذا السطر ضروري جداً لـ Render. يقرأ المنفذ من متغيرات البيئة، وإذا لم يجده يستخدم 3000 للعمل المحلي.
+// هذا السطر ضروري جداً لـ Vercel و Render. يقرأ المنفذ من متغيرات البيئة، وإذا لم يجده يستخدم 3000 للعمل المحلي.
 const port = process.env.PORT || 3000;
 
 // Config
@@ -37,7 +30,6 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // هذا السطر يقرأ مفتاح API الخاص بـ Gemini من متغيرات البيئة
-    // يجب عليك إضافة هذا المفتاح في Render
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error('GEMINI_API_KEY not set in environment');
