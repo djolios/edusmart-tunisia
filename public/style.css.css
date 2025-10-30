@@ -1,0 +1,240 @@
+/* ===== إعدادات أساسية ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== الهيدر الأزرق ===== */
+.main-header {
+    background: linear-gradient(135deg, #1e73be 0%, #1557a8 100%);
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.main-header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ===== المحتوى الرئيسي ===== */
+.chat-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 850px;
+    height: 80vh;
+    max-height: 700px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ===== منطقة الرسائل ===== */
+.messages-area {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fafbfc;
+}
+
+/* ===== تصميم الرسائل ===== */
+.message {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #5a6c7d;
+}
+
+.message-bubble {
+    padding: 18px 24px;
+    border-radius: 16px;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 75%;
+}
+
+/* رسائل البوت */
+.bot-message {
+    align-items: flex-start;
+}
+
+.bot-bubble {
+    background: linear-gradient(135deg, #e3f2fd 0%, #dbe9f7 100%);
+    color: #1a1a1a;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(30, 115, 190, 0.15);
+}
+
+/* رسائل المستخدم */
+.user-message {
+    align-items: flex-end;
+}
+
+.user-message .message-label {
+    text-align: left;
+}
+
+.user-bubble {
+    background: linear-gradient(135deg, #bbdefb 0%, #a8d5f7 100%);
+    color: #1a1a1a;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 8px rgba(30, 115, 190, 0.15);
+}
+
+/* ===== منطقة الإدخال ===== */
+.input-section {
+    padding: 25px 30px;
+    background: white;
+    border-top: 2px solid #e8eef5;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.message-input {
+    flex: 1;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-family: 'Tajawal', sans-serif;
+    border: 2px solid #d1dce5;
+    border-radius: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f8fafb;
+}
+
+.message-input:focus {
+    border-color: #1e73be;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(30, 115, 190, 0.1);
+}
+
+.message-input::placeholder {
+    color: #9ca9b3;
+}
+
+.send-button {
+    padding: 16px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #1e73be 0%, #1557a8 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(30, 115, 190, 0.3);
+}
+
+.send-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(30, 115, 190, 0.4);
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+/* ===== تحسين شريط التمرير ===== */
+.messages-area::-webkit-scrollbar {
+    width: 10px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+    background: #f0f3f7;
+    border-radius: 10px;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #a5c5df 0%, #8fb3d4 100%);
+    border-radius: 10px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8fb3d4 0%, #7a9fc7 100%);
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .chat-container {
+        border-radius: 0;
+        height: 100vh;
+        max-height: none;
+    }
+
+    .messages-area {
+        padding: 20px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+        font-size: 0.95rem;
+    }
+
+    .input-section {
+        padding: 18px 15px;
+        gap: 10px;
+    }
+
+    .message-input {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+    }
+
+    .send-button {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .send-button {
+        padding: 14px 22px;
+    }
+}
