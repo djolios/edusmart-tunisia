@@ -5,9 +5,15 @@ const cors = require('cors');
 
 const app = express();
 const path = require('path');
+app.use(express.static('public'));
 
 // هذا السطر ضروري جداً لـ Vercel و Render. يقرأ المنفذ من متغيرات البيئة، وإذا لم يجده يستخدم 3000 للعمل المحلي.
 const port = process.env.PORT || 3000;
+
+// هذا السطر يعرض ملف index.html عند زيارة الصفحة الرئيسية
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Config
 app.use(cors());
